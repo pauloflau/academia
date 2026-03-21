@@ -21,7 +21,7 @@ public class Telefone {
 	@Column(name = "CELULAR_DDD", nullable = false, length = 2)
 	private Integer dddCelular;
 	
-	@Column(name = "CELUlAR_NUMERO", nullable = false, length = 9)
+	@Column(name = "CELULAR_NUMERO", nullable = false, length = 9)
 	private Integer numeroCelular;
 
 	@Column(name = "FIXO_DDD", nullable = true, length = 2)
