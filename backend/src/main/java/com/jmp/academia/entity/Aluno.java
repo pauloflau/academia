@@ -2,6 +2,7 @@ package com.jmp.academia.entity;
 
 import java.time.LocalDate;
 
+import com.jmp.academia.dtos.AlunoDto;
 import com.jmp.academia.enums.Sexo;
 import com.jmp.academia.enums.Situacao;
 
@@ -57,4 +58,14 @@ public class Aluno {
 	
 	@Embedded //O TELEFONE FAZ PARTE DE ALUNO E COMPARTILHA O ID DE ALUNO
 	private Telefone telefone = new Telefone();
+	
+	public Aluno(AlunoDto dto) {
+		this.matricula = dto.getMatricula();
+		this.nome = dto.getNome();
+		this.sexo = dto.getSexo();
+		this.rg = dto.getRg();
+		this.dataNascimento = dto.getDataNascimento();
+		this.situacao = dto.getSituacao();
+		this.email = dto.getEmail();		
+	}
 }

@@ -2,6 +2,7 @@ package com.jmp.academia.dtos;
 
 import java.time.LocalDate;
 
+import com.jmp.academia.entity.Aluno;
 import com.jmp.academia.enums.Sexo;
 import com.jmp.academia.enums.Situacao;
 
@@ -27,4 +28,14 @@ public class AlunoDto {
 	private String email;
 	private EnderecoDto endereco = new EnderecoDto();
 	private TelefoneDto telefone = new TelefoneDto();
+	
+	public AlunoDto(Aluno entidade) {
+		this.matricula = entidade.getMatricula();
+		this.nome = entidade.getNome();
+		this.sexo = entidade.getSexo();
+		this.rg = entidade.getRg();
+		this.dataNascimento = entidade.getDataNascimento();
+		this.situacao = entidade.getSituacao();
+		this.email = entidade.getEmail();		
+	}
 }
