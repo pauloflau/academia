@@ -23,6 +23,21 @@ Possíveis tecnologias:
 
 ---
 
+## Modelagem
+
+<img width="531" height="371" alt="image" src="https://github.com/user-attachments/assets/d301f641-eb5f-4cbf-aee8-31a82d84c8b2" />
+
+---
+
+## Funcionalidades (planejadas)
+
+- Cadastro de alunos
+- Cadastro de treinos
+- Controle de frequência
+- Planos de academia
+
+---
+
 ## Como rodar o projeto
 **Backend (Spring Boot)**
 
@@ -44,15 +59,6 @@ http://localhost:8080
 **Frontend**
 
 Ainda não implementado.
-
----
-
-## Funcionalidades (planejadas)
-
-- Cadastro de alunos
-- Cadastro de treinos
-- Controle de frequência
-- Planos de academia
 
 ---
 
