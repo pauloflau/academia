@@ -3,8 +3,8 @@ package com.jmp.academia.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.jmp.academia.entity.Acesso;
+import com.jmp.academia.entity.Aluno;
 
 @Repository
-public interface AlunoRepository extends JpaRepository<Acesso, Integer>{
+public interface AlunoRepository extends JpaRepository<Aluno, String>{
 }
