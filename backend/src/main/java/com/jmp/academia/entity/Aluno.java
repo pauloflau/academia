@@ -67,5 +67,19 @@ public class Aluno {
 		this.dataNascimento = dto.getDataNascimento();
 		this.situacao = dto.getSituacao();
 		this.email = dto.getEmail();		
+	
+		this.endereco.setRua(dto.getEnderecoDto().getRua());
+		this.endereco.setNumero(dto.getEnderecoDto().getNumero()); 
+		this.endereco.setComplemento(dto.getEnderecoDto().getComplemento());
+		this.endereco.setCidade(dto.getEnderecoDto().getCidade());
+		this.endereco.setCep(dto.getEnderecoDto().getCep());
+		
+		this.endereco.getEstado().setNome(dto.getEnderecoDto().getEstado().getNome());
+		this.endereco.getEstado().setSigla(dto.getEnderecoDto().getEstado().getSigla());
+		
+		this.telefone.setDddCelular(dto.getTelefoneDto().getDddCelular());
+		this.telefone.setNumeroCelular(dto.getTelefoneDto().getNumeroCelular());
+		this.telefone.setDddFixo(dto.getTelefoneDto().getDddFixo());
+		this.telefone.setNumeroFixo(dto.getTelefoneDto().getNumeroFixo());
 	}
 }
