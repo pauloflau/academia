@@ -18,15 +18,15 @@ import lombok.ToString;
 @Embeddable //significa que faz parte de outra classe e o id esta em quem defini como @Embedded
 public class Telefone {
 	
-	@Column(name = "CELULAR_DDD", nullable = false, length = 2)
+	@Column(name = "CELULAR_DDD", length = 2)
 	private Integer dddCelular;
 	
-	@Column(name = "CELULAR_NUMERO", nullable = false, length = 9)
+	@Column(name = "CELULAR_NUMERO", length = 9)
 	private Integer numeroCelular;
 
-	@Column(name = "FIXO_DDD", nullable = true, length = 2)
+	@Column(name = "FIXO_DDD", length = 2)
 	private Integer dddFixo;
 
-	@Column(name = "FIXO_NUMERO", nullable = true, length = 9)
+	@Column(name = "FIXO_NUMERO", length = 9)
 	private Integer numeroFixo;
 }
