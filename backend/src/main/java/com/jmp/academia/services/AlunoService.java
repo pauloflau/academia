@@ -1,5 +1,8 @@
 package com.jmp.academia.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,26 +17,28 @@ import lombok.RequiredArgsConstructor;
 public class AlunoService {
 	private final AlunoRepository alunoRepository;
 	
+	public List<AlunoDto> getAll() {
+		
+		List<Aluno> listaEntidade = alunoRepository.findAll();
+		List<AlunoDto> listaDto = new ArrayList<>();
+		
+		for(Aluno aluno : listaEntidade) {
+			AlunoDto dto = new AlunoDto(aluno);
+			listaDto.add(dto);
+		}
+		
+		return listaDto; 
+	}
+	
 	@Transactional
 	public AlunoDto insert(AlunoDto dto) {
-		Aluno aluno = new Aluno();
-		aluno.setMatricula(dto.getMatricula());
-		aluno.setSexo(dto.getSexo());
-		aluno.setRg(dto.getRg());
-		aluno.setDataNascimento(dto.getDataNascimento());
-		aluno.setSituacao(dto.getSituacao());
-		aluno.setEmail(dto.getEmail());
+		Aluno aluno = new Aluno(dto);
 		
 		aluno = alunoRepository.save(aluno);
 		
-		dto.setMatricula(aluno.getMatricula());
-		dto.setSexo(aluno.getSexo());
-		dto.setRg(aluno.getRg());
-		dto.setDataNascimento(aluno.getDataNascimento());
-		dto.setSituacao(aluno.getSituacao());
-		dto.setEmail(aluno.getEmail());
+		AlunoDto novoDto = new AlunoDto(aluno);
 		
-		return dto;
+		return novoDto;
 	}	
 }
 /*
