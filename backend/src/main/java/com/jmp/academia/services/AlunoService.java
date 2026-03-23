@@ -40,13 +40,42 @@ public class AlunoService {
 		
 		return novoDto;
 	}	
-}
-/*
- * 
-	@Embedded //O ENDERECO FAZ PARTE DE ALUNO E COMPARTILHA O ID DE ALUNO
-	private Endereco endereco = new Endereco();
 	
-	@Embedded //O TELEFONE FAZ PARTE DE ALUNO E COMPARTILHA O ID DE ALUNO
-	private Telefone telefone = new Telefone();
- * */
+	public AlunoDto findById(String matricula) {
+		Aluno aluno = alunoRepository.findById(matricula).orElse(null);
+		
+		AlunoDto dto = new AlunoDto(aluno);
+		
+		return dto;
+	}
+	
+	@Transactional
+	public AlunoDto update(String matricula, AlunoDto dto) {
+		Aluno aluno = alunoRepository.findById(matricula).orElse(null);
+		
+		if (aluno != null) {
+			aluno = new Aluno(dto);
+			aluno.setMatricula(matricula);
+			
+			aluno = alunoRepository.save(aluno);
+			
+			AlunoDto novoDto = new AlunoDto(aluno);
+			
+			return novoDto;
+		}
+		return null;		
+	}
+	
+	@Transactional
+	public boolean delete(String matricula) {
+		Aluno aluno = alunoRepository.findById(matricula).orElse(null);
+		
+		if (aluno != null) {
+			alunoRepository.deleteById(matricula);
+			return true;
+		}
+		return false;
+	}
+}
+
  
