@@ -1,10 +1,12 @@
 package com.jmp.academia.entity;
 
 import java.time.LocalDate;
+import java.time.Year;
 
 import com.jmp.academia.dtos.AlunoDto;
 import com.jmp.academia.enums.Sexo;
 import com.jmp.academia.enums.Situacao;
+import com.jmp.academia.util.DiversosUtils;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -60,7 +62,7 @@ public class Aluno {
 	private Telefone telefone = new Telefone();
 	
 	public Aluno(AlunoDto dto) {
-		this.matricula = dto.getMatricula();
+		//this.matricula = dto.getMatricula();
 		this.nome = dto.getNome();
 		this.sexo = dto.getSexo();
 		this.rg = dto.getRg();
@@ -81,5 +83,41 @@ public class Aluno {
 		this.telefone.setNumeroCelular(dto.getTelefoneDto().getNumeroCelular());
 		this.telefone.setDddFixo(dto.getTelefoneDto().getDddFixo());
 		this.telefone.setNumeroFixo(dto.getTelefoneDto().getNumeroFixo());
+	}
+	
+	public void atualizarDados(AlunoDto dto) {
+	    this.nome = dto.getNome();
+	    this.sexo = dto.getSexo();
+	    this.rg = dto.getRg();
+	    this.dataNascimento = dto.getDataNascimento();
+	    this.situacao = dto.getSituacao();
+	    this.email = dto.getEmail();
+
+	    this.endereco.setRua(dto.getEnderecoDto().getRua());
+	    this.endereco.setNumero(dto.getEnderecoDto().getNumero());
+	    this.endereco.setComplemento(dto.getEnderecoDto().getComplemento());
+	    this.endereco.setCidade(dto.getEnderecoDto().getCidade());
+	    this.endereco.setCep(dto.getEnderecoDto().getCep());
+
+	    this.endereco.getEstado().setSigla(dto.getEnderecoDto().getEstado().getSigla());
+
+	    this.telefone.setDddCelular(dto.getTelefoneDto().getDddCelular());
+	    this.telefone.setNumeroCelular(dto.getTelefoneDto().getNumeroCelular());
+	    this.telefone.setDddFixo(dto.getTelefoneDto().getDddFixo());
+	    this.telefone.setNumeroFixo(dto.getTelefoneDto().getNumeroFixo());
+	}
+	
+	public void gerarMatricula(String maxMatricula) {
+		Year ano = Year.now();
+	    String anoAtual = String.valueOf(ano.getValue());
+		
+		if(maxMatricula == null) {
+			maxMatricula = anoAtual + DiversosUtils.preencheZero(0,4);
+		}
+		
+		int sequencial = Integer.parseInt(maxMatricula.substring(4));
+		sequencial++;
+		
+		this.matricula = anoAtual + DiversosUtils.preencheZero(sequencial, 4);
 	}
 }

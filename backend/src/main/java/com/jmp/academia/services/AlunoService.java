@@ -34,6 +34,10 @@ public class AlunoService {
 	public AlunoDto insert(AlunoDto dto) {
 		Aluno aluno = new Aluno(dto);
 		
+		String maxMatricula = alunoRepository.findMaxMatricula();
+		
+		aluno.gerarMatricula(maxMatricula);
+		
 		aluno = alunoRepository.save(aluno);
 		
 		AlunoDto novoDto = new AlunoDto(aluno);
@@ -54,8 +58,8 @@ public class AlunoService {
 		Aluno aluno = alunoRepository.findById(matricula).orElse(null);
 		
 		if (aluno != null) {
-			aluno = new Aluno(dto);
-			aluno.setMatricula(matricula);
+			aluno.atualizarDados(dto);
+			//aluno.setMatricula(matricula);
 			
 			aluno = alunoRepository.save(aluno);
 			
